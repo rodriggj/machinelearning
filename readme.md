@@ -218,9 +218,15 @@ Will reveal output as follows in the Jupyter notebook:
 
 ### Commands
 
+housing = <variable>
+
 #### Pandas
-import pandas as pd
-pd.read_csv("<path/file.csv>")
-housing = pd.read_csv("<path/file.csv>")
-housing.head()
-housing.info()
+- import pandas as pd
+- pd.read_csv("<path/file.csv>")
+- housing = pd.read_csv("<path/file.csv>")
+- housing.head()
+- housing.info()
+- housing.describe()
+
+#### matlab
+- housing.hist()
