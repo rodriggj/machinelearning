@@ -218,7 +218,7 @@ Will reveal output as follows in the Jupyter notebook:
 
 ### Commands
 
-housing = <variable>
+housing = {variable}
 
 #### Pandas
 - import pandas as pd
