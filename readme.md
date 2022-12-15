@@ -3,6 +3,13 @@
 ## Objective
 > Work through an example project end to end, pretending to be a recently hired data scientist at a real estate company. 
 
++ [Steps](https://github.com/rodriggj/machinelearning/tree/proj01#steps)
+    + [High Level Steps](https://github.com/rodriggj/machinelearning/tree/proj01#high-level-steps)
+    + [Low Level Steps](https://github.com/rodriggj/machinelearning/tree/proj01#lower-level-steps)
++ [Reference Materials](https://github.com/rodriggj/machinelearning/tree/proj01#references)
+
+---------
+
 ## Steps
 
 ### High level steps: 
@@ -41,6 +48,7 @@
 7. Present your solution 
 8. Launch, monitor, and maintain your system
 
+<small>[Back to Top](https://github.com/rodriggj/machinelearning/tree/proj01#high-level-steps)</small>
 ------- 
 
 ### Lower Level Steps
@@ -95,6 +103,13 @@ jupyter notebook
 You should be redirected to a browser where you will see the Jupyter notebook application, and your proj01 env. If you didn't get a browser window, then Open a Brower and type `http://localhost:8888/`. 
 
 6. From this screen, Click "New", and select "Python 3". You will re-directed to a new Workspace in Jupyter Notebook. You can rename the notebook to "Median Housing Prices" for future reference. 
+
+<small>[Back to the Top](https://github.com/rodriggj/machinelearning/tree/proj01#2-get-the-data)</small>
+
+---------
+
+#### 2.7 - Get the Data
+
 
 ---------
 
