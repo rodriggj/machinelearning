@@ -35,7 +35,7 @@
 - [ ] 2.4 - Check legal obligations, and get authorization if necessary
 - [ ] 2.5 - Get access authorizations
 - [ ] 2.6 - [Create a workspace](https://github.com/rodriggj/machinelearning/tree/proj01#26---create-a-workspace) 
-- [ ] 2.7 - Get the data
+- [ ] 2.7 - [Download the Data](https://github.com/rodriggj/machinelearning/tree/proj01#27---download-the-data)
 - [ ] 2.8 - Convert the data to a format you can easily manipulate (without changing the data integrity)
 - [ ] 2.9 - Ensure sensitive information is deleted or protected (e.g. anonymized)
 - [ ] 2.10 - Check the size and type of data (time series, sample, geographical, etc.) 
@@ -48,7 +48,7 @@
 7. Present your solution 
 8. Launch, monitor, and maintain your system
 
-<small><small>[Back to Top](https://github.com/rodriggj/machinelearning/tree/proj01#high-level-steps)</small></small>
+<small>[Back to Top](https://github.com/rodriggj/machinelearning/tree/proj01#high-level-steps)</small>
 ------- 
 
 ### Lower Level Steps
@@ -108,8 +108,10 @@ You should be redirected to a browser where you will see the Jupyter notebook ap
 
 ---------
 
-#### 2.7 - Get the Data
+#### 2.7 - Download the Data
+1. 
 
+<small>[Back to the Top](https://github.com/rodriggj/machinelearning/tree/proj01#2-get-the-data)</small>
 
 ---------
 
