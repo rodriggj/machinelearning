@@ -37,8 +37,8 @@
 - [ ] 2.6 - [Create a workspace](https://github.com/rodriggj/machinelearning/tree/proj01#26---create-a-workspace) 
 - [ ] 2.7 - [Download the Data](https://github.com/rodriggj/machinelearning/tree/proj01#27---download-the-data)
 - [ ] 2.8 - [Convert the data to a format you can easily manipulate (without changing the data integrity)](https://github.com/rodriggj/machinelearning/tree/proj01#28---210-take-a-preliminary-look-at-the-data)
-- [ ] 2.9 - [Ensure sensitive information is deleted or protected (e.g. anonymized)](https://github.com/rodriggj/machinelearning/tree/proj01#28---210-take-a-preliminary-look-at-the-data)
-- [ ] 2.10 - [Check the size and type of data (time series, sample, geographical, etc.)](https://github.com/rodriggj/machinelearning/tree/proj01#28---210-take-a-preliminary-look-at-the-data) 
+- [ ] 2.9 - Ensure sensitive information is deleted or protected (e.g. anonymized)
+- [ ] 2.10 - Check the size and type of data (time series, sample, geographical, etc.)
 - [ ] 2.11 - Sample a test set, put it aside, and never look at it (no data snooping)
 
 3. Discover and visualize the data to gain insights
@@ -134,7 +134,7 @@ Which should render a data table in your notebook.
 
 ---------- 
 
-#### 2.8 - 2.10 Take a Preliminary Look at the Data
+#### 2.8 - Convert the data to a format you can easily manipulate
 
 1. Assigning the data read from the file to a variable will allow you to call additional methods utilizing the _pandas_ library. For example `head()` and `info()`. See diagrams below. 
 
@@ -212,6 +212,117 @@ There are several things to notice about these histograms:
 ---------
 
 #### 2.11 - Sample a test set, put it aside, and never look at it (no data snooping)
+
+We want to avoid sampling bias, and create models that over-fit our data. Therefore we want to early on, take a portion of our sample data and set it aside as a `test-set`. The logic behind the amount of data you choose for test set varies, but an 80/20 rule typically applies. 
+
+1. First we will create a function that will take our total sample size and divide it by some ratio we enter, to set aside a `training_set` and a `test_set`. 
+
+```python
+import numpy as np
+def split_train_test(data, test_ratio): 
+    shuffled_indices = np.random.permutation(len(data))
+    test_set_size = int(len(data) * test_ratio)
+    test_indices = shuffled_indices[:test_set_size]
+    train_indices = shuffled_indices[test_set_size:]
+    return data.iloc[train_indices], data.iloc[test_indices]
+```
+
+Now in our notebook execute the function with an implemention like this: 
+
+```python
+train_set, test_set = split_train_test(housing, 0.2)
+```
+
+Now validate that the split occured correctly. First test the `train_set` 
+```python
+len(train_set)
+```
+
+Next validate the quantity of the the `test_set` sample size
+```python
+len(test_set)
+```
+
+<p align="center">
+<img width="350" alt="image" src="https://user-images.githubusercontent.com/8760590/207978151-965c7a03-1f01-4722-9c8a-8fc07b5a4d75.png">
+</p>
+
+2. While the function works there are several problems with this method of creating a sample test set: 
+    1. We want the training data to be consistent so that we can train our model. We also want our test set to be consistent to ensure our performance metrics are valid as we "tune" our model. If we keep regenerating new "training" & "test" samples then we won't be able to consistently train or tune our model. 
+
+    With the current function the next time you run the function new "training" & "test" sets will be created. We don't want this. 
+
+    2. The function uses a purely random sampling method to isolate the "test" and "training" sets. This may cause issues with training our model b/c we are not assured that the randomly selected samples are represented of the total population. When a marketing company decides to do a random sample interview of a product they could simply open the phone book and start calling all the "A" names till they got to say 1000 samples. But there is a high likely hood that all the "A" named people are not a representative total of all the population in the phone book. We would want some dispersion to assume representation of the total. 
+
+    3. Right now there is no "index" of each record in the dataset. We could use the "row" in the .csv file or some combination of attributes to create a unique identifier. But it is relevant to mention that random sampling without a means to id what was sampled in one run to the next is probably going to become a problem. 
+
+To address these issues there are a few options: 
++ One option it so save the `test set` in the first run to another file and when necessary load this data.
++ Another option is to set the random number generator's `seed` (e.g. np.random.seed(42)^14) before calling _np.random.permutation()_ so that it always generates the same shuffled indicies. 
+
+> Both of these solutions will break next time you fetch an updated dataset. 
+
++ A common solution is to use each instances' identifier to decide whether or not it should go in the test set. (assuming a unique id is available or can be created). For example you could compute a _hash_ of each instances' id and put that instance in the test set if it has a lower than or equal to 20% of the maximum hash value. 
+
+```python
+from zlib import crc32
+
+def test_set_check(identifier, test_ratio):
+    return crc32(np.int64(identifier)) & 0xffffffff < test_ratio * 2**32
+
+def split_train_test(data, test_ratio, id_column): 
+    ids = data(id_columns) 
+    in_test_set = ids.apply(lambda id_: test_set_check(id_, test_ratio))
+    return data.loc[~in_test_set], data.loc[in_test_set]
+```
+> Unfortunately the housing dataset does not have a identifier column. The simpliest solution is to use the row index as the ID. 
+
+```python
+housing_with_id = housing.reset_index()   # adds and index column
+train_set, test_set = split_train_test_by_id(housing_with_id, 0.2, "index")
+```
+
+> If you use this method you need to make sure that new data gets `appended` to the end of the dataset and that no row ever gets deleted. 
+
++ Sci-Kit Learn provides a few methods for splitting datasets into mulitple subsets. The simpliest method is `train_test_split()` which does pretty much the same as our current split function with a few additional features: 
+    1. there is a `random_state` parameter that allows you to set a random generator seed. 
+    2. You can pass multiple datasets with an **identical number of rows** and it will split them on the same indices
+
+```python
+from sklearn.model_selections import train_test_split
+train_set, test_set = train_test_split(housing, test_size = 0.2, random_state = 42)
+```
+
+3. Typically, instead of random sample sizes for your test set, `strata` are used to develop what is called `stratified sampling`. `strata` are homogenous subgroups within a population that are representative of the overall population total. The right number of instances are chosen within each `stratum` to gaurantee that the test set is prpresentative of the overall total. (e.g Census mapping of the united states would include strata such as men, women, homeless, employed, etc.)
+
+In our scenario experts are used to define _median income_ as a very important attribute to predict _median housing prices_. You want to ensure that the test set is representative of the various categories (strata) of incomes in the whole dataset. Since the _median income_ is a continous numerical attribute, you need to create in _income category_ attribute. 
+
+If you look at the _median income_ histogram, and decide we can use the this as a means to define strata. 
+
+```s
+housing["income_cat"] = pd.cut(housing["median_income"], bins=[0, 1.5, 3.0, 4.5, 6., np.inf], labels=[1,2,3,4,5])
+```
+
+<p align="center">
+<img width="350" alt="image" src="https://user-images.githubusercontent.com/8760590/207984979-789e3c30-f875-4cf8-909d-7525246aa823.png">
+</p>
+
+4. So now we can use the _Scikit-Learn_ `StratifiedShuffleSplit` class to generate a test sample from the strata defined, with an appropriate number of instances within each strata to reserver in your test set. To do this type the following code: 
+
+```python
+from sklearn.model_selection import StratifiedShuffleSplit
+
+split = StratifiedShuffleSplit(n_splits=1, test_size=0.2, random_state=42)
+for train_index, test_index, in split.split(housing, housing["income_cat"]): 
+    strat_train_set = housing.loc[train_index]
+    strat_test_set = housing.loc[test_index]
+```
+
+<p align="center">
+<img width="350" alt="image" src="https://user-images.githubusercontent.com/8760590/207987240-1c56ffd3-67a1-4834-93ba-fc2e6ee3505d.png">
+</p>
+
+5. It is now safe to say that our test data and our training data are similar such that a model built from the training set should have similar "generalization" when applied to our test set. 
 
 ---------
 ## References
