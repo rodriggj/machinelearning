@@ -27,7 +27,7 @@
 - [ ] 2.3 - Check how much space it will take. 
 - [ ] 2.4 - Check legal obligations, and get authorization if necessary
 - [ ] 2.5 - Get access authorizations
-- [ ] 2.6 - Create a workspace 
+- [ ] 2.6 - [Create a workspace](https://github.com/rodriggj/machinelearning/tree/proj01#26---create-a-workspace) 
 - [ ] 2.7 - Get the data
 - [ ] 2.8 - Convert the data to a format you can easily manipulate (without changing the data integrity)
 - [ ] 2.9 - Ensure sensitive information is deleted or protected (e.g. anonymized)
