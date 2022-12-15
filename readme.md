@@ -109,7 +109,24 @@ You should be redirected to a browser where you will see the Jupyter notebook ap
 ---------
 
 #### 2.7 - Download the Data
-1. 
+1. Typically we would connect to some data source and execute some queries to retrieve data. This would involve having the correct permissions, and access to the data source which we can't really mimic. For the purpose of this demo we will simply download a .csv file containing Census Data that we will use for our Median pricing analysis. 
+
+2. Navigate to the following URL and download the .tgz file, fo the $ML_PATH directory. 
+
+```s
+https://github.com/ageron/handson-ml2/blob/master/datasets/housing/housing.tgz
+```
+
+3. Unzip this file, to uncover the `housing.csv` file. 
+
+4. In the jupyter notebook, enter the followin code to open and import the `housing.csv` file with the pandas library: 
+
+```python
+import pandas as pd
+pd.read_csv("./housing.csv")
+```
+
+Which should render a data table in your notebook.
 
 <small>[Back to the Top](https://github.com/rodriggj/machinelearning/tree/proj01#2-get-the-data)</small>
 
