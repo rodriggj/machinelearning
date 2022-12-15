@@ -128,6 +128,72 @@ pd.read_csv("./housing.csv")
 
 Which should render a data table in your notebook.
 
+<p align="center">
+<img width="350" alt="image" src="https://user-images.githubusercontent.com/8760590/207964415-848be661-d721-40e6-971b-5dde8ef46d9f.png">
+</p>
+
+5. Assigning the data read from the file to a variable will allow you to call additional methods utilizing the _pandas_ library. For example `head()` and `info()`. See diagrams below. 
+
+<p align="center">
+<img width="350" alt="image" src="https://user-images.githubusercontent.com/8760590/207964801-390b42fc-2ae3-4fa4-a848-57ae3e180887.png">
+</p>
+
+> By leveraging _head()_ method you can see the top 5 rows of the DataFrame. Here you can see that there are 10 different attributes in the dataset. 
+
+<p align="center">
+<img width="350" alt="image" src="https://user-images.githubusercontent.com/8760590/207964938-ef2f6a69-50a7-478b-8527-15ddd14c08ca.png">
+</p>
+
+> By leveraging _info()_ method, pandas library will render quick descriptions of the data, in particular the total number of rows, each attribute type, and the number of nonnull values. 
+
+6. If we start to examine this output we can begin to define additional tasks needed to "rationalize" our data. For example note in the _info()_ display there are 20,433 values in the `total_bedrooms` feature. This means that 207 districts (our total was 20640) are missing this feature in the data set. You can also see that all the data attribues are numeric except for the `ocean_proximity` feature which is of type _object_. 
+
+<p align="center">
+<img width="350" alt="image" src="https://user-images.githubusercontent.com/8760590/207967601-f4836d4e-fa63-4c45-b006-f140645fb2d7.png">
+</p>
+
+Another observation is that we can see that the `ocean_proximity` attribute has repetive values, suggesting it may be "categorical". If we wanted to validate this assumption we can use the pandas library _value_counts()_ method, and return the categories and count of values in each respective category. 
+
+<p align="center">
+<img width="350" alt="image" src="https://user-images.githubusercontent.com/8760590/207968358-c564edef-8e21-479b-86f1-f9e1285d3260.png">
+</p>
+
+<p align="center">
+<img width="350" alt="image" src="https://user-images.githubusercontent.com/8760590/207968942-01aa9321-be74-4397-b071-2f3ebe84713b.png">
+</p>
+
+7. We can explore the other "numeric" fields as well. For example lets look at the _describe()_ method which will show a summary of the numerical attributes in the housing data set. 
+
+```s
+housing.describe()
+```
+Here we see a returned table with some statistical data regarding the data set. 
+
+<p align="center">
+<img width="350" alt="image" src="https://user-images.githubusercontent.com/8760590/207969304-302b59b0-8b6c-4a34-bda3-7268b6559bf0.png">
+</p>
+
+> **NOTE:** Null values are ignored when calculating these statistics. See the `total_bedroom` count is 20433 and all the statistical categories are still provided. 
+
+> **NOTE:** The `std` row, shows the _standard deviation_ of the observed values to show the amount of dispersion in the attribute. 
+
+> **NOTE:** The _quartile_ views. The 25%, median, 75% values show the median for the data captured in each _quartile_. So for > 25% of the observations the `housing_median_age` is 18 years old. 
+
+8. Finally, one last way to quickly evaluate the downloaded data is to plot the data visually. This can quickly be done with a histogram of each of the attributes. You can execute a histogram on a single or all attributes in the data set. For this example we will use the _hist()_ method in the `matlab` library and list all attributes. 
+
+```s
+%matplotlib inline   # only neede in a Jupyter notebook
+import matplotlib.pyplot as plt
+housing.hist(bins=50, figsize=(20,15))
+plt.show()
+```
+
+Will reveal output as follows in the Jupyter notebook: 
+
+<p align="center">
+<img width="350" alt="image" src="https://user-images.githubusercontent.com/8760590/207971016-e40814a4-1ccf-43a5-84b0-0bc1bbe3c371.png">
+</p>
+
 <small>[Back to the Top](https://github.com/rodriggj/machinelearning/tree/proj01#2-get-the-data)</small>
 
 ---------
@@ -149,3 +215,12 @@ Which should render a data table in your notebook.
 - [ ] [Wikipedia's list of ML Datasets](https://en.wikipedia.org/wiki/List_of_datasets_for_machine-learning_research)
 - [ ] [Quora.com](https://www.quora.com/Where-can-I-find-large-datasets-open-to-the-public)
 - [ ] [Subreddit](https://www.reddit.com/r/datasets/)
+
+### Commands
+
+#### Pandas
+import pandas as pd
+pd.read_csv("<path/file.csv>")
+housing = pd.read_csv("<path/file.csv>")
+housing.head()
+housing.info()
