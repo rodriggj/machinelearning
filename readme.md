@@ -39,7 +39,7 @@
 - [ ] 2.8 - [Convert the data to a format you can easily manipulate (without changing the data integrity)](https://github.com/rodriggj/machinelearning/tree/proj01#28---210-take-a-preliminary-look-at-the-data)
 - [ ] 2.9 - Ensure sensitive information is deleted or protected (e.g. anonymized)
 - [ ] 2.10 - Check the size and type of data (time series, sample, geographical, etc.)
-- [ ] 2.11 - Sample a test set, put it aside, and never look at it (no data snooping)
+- [ ] 2.11 - [Sample a test set, put it aside, and never look at it (no data snooping)](https://github.com/rodriggj/machinelearning/tree/proj01#211---sample-a-test-set-put-it-aside-and-never-look-at-it-no-data-snooping)
 
 3. Discover and visualize the data to gain insights
 4. Prepare the data for Machine Learning algorithms
@@ -323,6 +323,8 @@ for train_index, test_index, in split.split(housing, housing["income_cat"]):
 </p>
 
 5. It is now safe to say that our test data and our training data are similar such that a model built from the training set should have similar "generalization" when applied to our test set. 
+
+<small>[Back to the Top](https://github.com/rodriggj/machinelearning/tree/proj01#2-get-the-data)</small>
 
 ---------
 ## References
