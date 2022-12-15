@@ -47,7 +47,56 @@
 
 #### 2.6 - Create a Workspace
 
-1. 
+1. Install [python](https://www.python.org) if you haven't already. 
+
+2. Create a path to your virtual environment
+```s
+export ML_PATH="$HOME/Desktop/Dev/machinelearning"
+mkdir -p $ML_PATH
+```
+
+3. Create an isolated environment to contain you ML code and datasets with [virtualenv](https://virtualenv.pypa.io/en/latest/). Open a terminal session and run the following command: 
+```s
+python3 -m pip install -U virtualenv
+cd ML_PATH
+python3 -m virtualenv proj01
+```
+
+Now anytime you want to activate to this _virtualenv_ execute the following commands: 
+```s
+cd ML_PATH
+source proj01/bin/activate   #on Linux or Mac
+.\proj01\Scripts\activate    #on Windows
+```
+
+To exit, (aka deactivate) the _virtualenv_, execute the following command while in the active virtual env: 
+```s
+deactivate
+```
+
+4. Now that the _virtualenv_ is established, we need to install dependencies. For now we will install the following dependencies with our package manager program _pip_. 
++ jupyter
++ matplotlib
++ numpy
++ pandas
++ scipy
++ scikil-learn
+
+To do this, in your _virtualenv_ `proj01`, type the following command: 
+```s
+python3 -m pip install -U jupyter matplotlib numpy pandas scipy scikit-learn 
+```
+
+5. Now you can fire up your Jupyter Notebook application which is where we will create our workspace that we will be using for our ML analysis. In your _virtualenv_ type the following command: 
+```s
+jupyter notebook
+```
+
+You should be redirected to a browser where you will see the Jupyter notebook application, and your proj01 env. If you didn't get a browser window, then Open a Brower and type `http://localhost:8888/`. 
+
+6. From this screen, Click "New", and select "Python 3". You will re-directed to a new Workspace in Jupyter Notebook. You can rename the notebook to "Median Housing Prices" for future reference. 
+
+---------
 
 ## References
 
