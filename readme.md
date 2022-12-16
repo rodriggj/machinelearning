@@ -350,7 +350,57 @@ housing = strat_train_set.copy()
 
 #### 3.5 - Visualize the data
 
-1. 
+1. Since the data provides a lat & long it is a good idea to create a scatterplot of all the districts to visualize the data. 
+
+```s
+housing.plot(kind="scatter", x="longitude", y="latitude")
+```
+
+<p align="center">
+<img width="350" alt="image" src="https://user-images.githubusercontent.com/8760590/208117039-dfaef379-1dd5-49e5-923c-4b61afb9799d.png">
+</p>
+
+2. Setting the `alpha option` to 0.1 makes it easier to see the places of higher density of data points. 
+
+```s
+housing.plot(kind="scatter", x="longitude", y="latitude", alpha=0.1)
+```
+
+<p align="center">
+<img width="350" alt="image" src="https://user-images.githubusercontent.com/8760590/208117652-594f878a-3a34-4b2c-bfa9-89aabb025a08.png">
+</p>
+
+<p align="center">
+<img width="350" alt="image" src="https://user-images.githubusercontent.com/8760590/208118049-9dd3978a-36d5-4eb3-8894-50f99e8bbe30.png">
+</p>
+
+Here we can now see that the areas of high density are 
+1. The _Bay Area_
+2. _Los Angeles_
+3. _San Diego_
+4. A long line down the _Central Valley_, in particular _Sacremento_ & _Fresno_
+
+3. If we now shift from, _density_ to _housing prices_, we can implement some code that will provide additional insights. With the following code a circle represents the districts population (option s), and the color represents the prices (option c). We will use the predefined color map (option cmap) called _jet_, which ranges from blue (low values) to red (high prices). 
+
+```s
+housing.plot(kind="scatter", x="longitude", y="latitude", alpha=0.4, s=housing["population"]/100, label="population", figsize=(10,7), c="median_house_value", cmap=plt.get_cmap("jet"), colorbar=True,)
+
+plt.legend()
+```
+
+<p align="center">
+<img width="350" alt="image" src="https://user-images.githubusercontent.com/8760590/208119550-cc5e0b44-74dd-4dcb-ac2b-28d3fb6df5fa.png">
+</p>
+
+This plot tells you several things, or validates what you already knew: 
+1. housing prices are very much related to the location (proximity to the ocean)
+2. housing prices are certainly correlated to population density
+
+A clustering algorithm should be useful for detecting the main cluster and for adding new features that measure the proximity to the cluster centers. 
+
+Note that in Norther California, the proximity to ocean and density are not driving the prices of homes -- so the rule we choose may not be as linear as one may think. To determine how an observation is linked to a rule set we want to explore `correlation`. 
+
+
 ---------
 
 
