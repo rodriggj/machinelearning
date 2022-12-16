@@ -47,7 +47,7 @@
 - [ ] 3.3 - Study each attribute and its characteristics
 - [ ] 3.4 - For supervised learning tasks, identify the target attribute
 - [ ] 3.5 - [Visualize the data](https://github.com/rodriggj/machinelearning/tree/proj01#35---visualize-the-data)
-- [ ] 3.6 - [Study the correlations between attributes]()
+- [ ] 3.6 - [Study the correlations between attributes](https://github.com/rodriggj/machinelearning/tree/proj01#36---study-the-correlations-between-attributes)
 - [ ] 3.7 - Study how you would solve the problem manually 
 - [ ] 3.8 - Identify the promising transformations you may want to apply
 - [ ] 3.9 - Identify the extra data that would be useful 
@@ -59,7 +59,7 @@
 7. Present your solution 
 8. Launch, monitor, and maintain your system
 
-[[Back to Top]](https://github.com/rodriggj/machinelearning/tree/proj01#high-level-steps)
+[Back to Top](https://github.com/rodriggj/machinelearning/tree/proj01#high-level-steps)
 ------- 
 
 ### Lower Level Steps
@@ -115,7 +115,7 @@ You should be redirected to a browser where you will see the Jupyter notebook ap
 
 6. From this screen, Click "New", and select "Python 3". You will re-directed to a new Workspace in Jupyter Notebook. You can rename the notebook to "Median Housing Prices" for future reference. 
 
-<small>[Back to the Top](https://github.com/rodriggj/machinelearning/tree/proj01#2-get-the-data)</small>
+[Back to the Top](https://github.com/rodriggj/machinelearning/tree/proj01#2-get-the-data)
 ---------
 
 #### 2.7 - Download the Data
@@ -142,7 +142,7 @@ Which should render a data table in your notebook.
 <img width="350" alt="image" src="https://user-images.githubusercontent.com/8760590/207964415-848be661-d721-40e6-971b-5dde8ef46d9f.png">
 </p>
 
-<small>[Back to the Top](https://github.com/rodriggj/machinelearning/tree/proj01#2-get-the-data)</small>
+[Back to the Top](https://github.com/rodriggj/machinelearning/tree/proj01#2-get-the-data)
 ---------- 
 
 #### 2.8 - Convert the data to a format you can easily manipulate
@@ -218,7 +218,7 @@ There are several things to notice about these histograms:
 
 4. Finally, you notice that several of these histograms are `tail heavy`. Meaning there is a large amount of data outside of a "bell curve" which will make prediction accuracy difficult to predict "patterns". Some feature engineering or transformations of data may be necessary.
 
-<small>[Back to the Top](https://github.com/rodriggj/machinelearning/tree/proj01#2-get-the-data)</small>
+[Back to the Top](https://github.com/rodriggj/machinelearning/tree/proj01#2-get-the-data)
 ---------
 
 #### 2.11 - Sample a test set, put it aside, and never look at it (no data snooping)
@@ -334,7 +334,7 @@ for train_index, test_index, in split.split(housing, housing["income_cat"]):
 
 5. It is now safe to say that our test data and our training data are similar such that a model built from the training set should have similar "generalization" when applied to our test set. 
 
-<small>[Back to the Top](https://github.com/rodriggj/machinelearning/tree/proj01#2-get-the-data)</small>
+[Back to the Top](https://github.com/rodriggj/machinelearning/tree/proj01#2-get-the-data)
 ---------
 
 #### 3.1 - Create a copy of the data for exploration
@@ -345,7 +345,7 @@ for train_index, test_index, in split.split(housing, housing["income_cat"]):
 housing = strat_train_set.copy()
 ```
 
-<small>[Back to the Top](https://github.com/rodriggj/machinelearning/tree/proj01#3-discover-and-visualize-the-data-to-gain-insights)</small>
+[Back to the Top](https://github.com/rodriggj/machinelearning/tree/proj01#3-discover-and-visualize-the-data-to-gain-insights)
 ---------
 
 #### 3.5 - Visualize the data
@@ -400,7 +400,7 @@ A clustering algorithm should be useful for detecting the main cluster and for a
 
 Note that in Norther California, the proximity to ocean and density are not driving the prices of homes -- so the rule we choose may not be as linear as one may think. To determine how an observation is linked to a rule set we want to explore `correlation`. 
 
-<small>[Back to the Top](https://github.com/rodriggj/machinelearning/tree/proj01#3-discover-and-visualize-the-data-to-gain-insights)</small>
+[Back to the Top](https://github.com/rodriggj/machinelearning/tree/proj01#3-discover-and-visualize-the-data-to-gain-insights)
 ---------
 
 #### 3.6 - Study the correlations between attributes
@@ -426,7 +426,7 @@ corr_matrix["median_house_value"].sort_values(ascending=False)
 
 3. Another way to chekc for correlation between attributes is to use the pandas _scatter matrix()_ function, which plots every numerical attributes against every other numerical attribute. Since there are 11 numerical attributes you wou
 
-<small>[Back to the Top](https://github.com/rodriggj/machinelearning/tree/proj01#3-discover-and-visualize-the-data-to-gain-insights)</small>
+[Back to the Top](https://github.com/rodriggj/machinelearning/tree/proj01#3-discover-and-visualize-the-data-to-gain-insights)
 ---------
 ## References
 
