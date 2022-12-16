@@ -59,7 +59,7 @@
 7. Present your solution 
 8. Launch, monitor, and maintain your system
 
-<small>[Back to Top](https://github.com/rodriggj/machinelearning/tree/proj01#high-level-steps)</small>
+[[Back to Top]](https://github.com/rodriggj/machinelearning/tree/proj01#high-level-steps)
 ------- 
 
 ### Lower Level Steps
