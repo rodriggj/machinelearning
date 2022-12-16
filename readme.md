@@ -1,11 +1,13 @@
 # End-To-End Machine Learning Project
 
-## Objective
-> Work through an example project end to end, pretending to be a recently hired data scientist at a real estate company. 
+## Problem we are trying to solve...
 
 <p align="center">
 <img width="350" alt="image" src="https://user-images.githubusercontent.com/8760590/208179153-9dadbfc5-8e20-40d7-b743-005e11222e6c.png">
 </p>
+
+## Objective
+> Work through an example project end to end, pretending to be a recently hired data scientist at a real estate company. 
 
 + [Steps](https://github.com/rodriggj/machinelearning/tree/proj01#steps)
     + [High Level Steps](https://github.com/rodriggj/machinelearning/tree/proj01#high-level-steps)
