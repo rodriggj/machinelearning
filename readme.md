@@ -403,7 +403,7 @@ Note that in Norther California, the proximity to ocean and density are not driv
 <small>[Back to the Top](https://github.com/rodriggj/machinelearning/tree/proj01#3-discover-and-visualize-the-data-to-gain-insights)</small>
 ---------
 
-#### 3.5 - Visualize the data
+#### 3.6 - Study the correlations between attributes
 
 1. Since the data set isn't too large (20,640 records and only 1.6M of size), you can easily compute the _standard correlation coefficient_ (aka _Pearson's r_), between every pair of attributes using the `corr()` method. 
 
