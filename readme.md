@@ -371,8 +371,9 @@ housing.plot(kind="scatter", x="longitude", y="latitude", alpha=0.1)
 </p>
 
 <p align="center">
-<img width="350" alt="image" src="https://user-images.githubusercontent.com/8760590/208118049-9dd3978a-36d5-4eb3-8894-50f99e8bbe30.png">
+<img width="350" alt="image" src="https://user-images.githubusercontent.com/8760590/208131748-5ca324b9-0618-4060-b975-601f2d6ad614.png">
 </p>
+
 
 Here we can now see that the areas of high density are 
 1. The _Bay Area_
