@@ -42,7 +42,7 @@
 - [ ] 2.11 - [Sample a test set, put it aside, and never look at it (no data snooping)](https://github.com/rodriggj/machinelearning/tree/proj01#211---sample-a-test-set-put-it-aside-and-never-look-at-it-no-data-snooping)
 
 #### 3. Discover and visualize the data to gain insights
-- [ ] 3.1 - Create a copy of the data for exploration
+- [ ] [3.1 - Create a copy of the data for exploration](https://github.com/rodriggj/machinelearning/tree/proj01#31---create-a-copy-of-the-data-for-exploration)
 - [ ] 3.2 - Create a Jupyter notebook to keep a record of your exploration
 - [ ] 3.3 - Study each attribute and its characteristics
 - [ ] 3.4 - For supervised learning tasks, identify the target attribute
