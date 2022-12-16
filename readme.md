@@ -42,12 +42,12 @@
 - [ ] 2.11 - [Sample a test set, put it aside, and never look at it (no data snooping)](https://github.com/rodriggj/machinelearning/tree/proj01#211---sample-a-test-set-put-it-aside-and-never-look-at-it-no-data-snooping)
 
 #### 3. Discover and visualize the data to gain insights
-- [ ] [3.1 - Create a copy of the data for exploration](https://github.com/rodriggj/machinelearning/tree/proj01#31---create-a-copy-of-the-data-for-exploration)
+- [ ] 3.1 - [Create a copy of the data for exploration](https://github.com/rodriggj/machinelearning/tree/proj01#31---create-a-copy-of-the-data-for-exploration)
 - [ ] 3.2 - Create a Jupyter notebook to keep a record of your exploration
 - [ ] 3.3 - Study each attribute and its characteristics
 - [ ] 3.4 - For supervised learning tasks, identify the target attribute
-- [ ] 3.5 - Visualize the data
-- [ ] 3.6 - Study the correlations between attributes
+- [ ] 3.5 - [Visualize the data](https://github.com/rodriggj/machinelearning/tree/proj01#35---visualize-the-data)
+- [ ] 3.6 - [Study the correlations between attributes]()
 - [ ] 3.7 - Study how you would solve the problem manually 
 - [ ] 3.8 - Identify the promising transformations you may want to apply
 - [ ] 3.9 - Identify the extra data that would be useful 
@@ -400,10 +400,34 @@ A clustering algorithm should be useful for detecting the main cluster and for a
 
 Note that in Norther California, the proximity to ocean and density are not driving the prices of homes -- so the rule we choose may not be as linear as one may think. To determine how an observation is linked to a rule set we want to explore `correlation`. 
 
-
+<small>[Back to the Top](https://github.com/rodriggj/machinelearning/tree/proj01#3-discover-and-visualize-the-data-to-gain-insights)</small>
 ---------
 
+#### 3.5 - Visualize the data
 
+1. Since the data set isn't too large (20,640 records and only 1.6M of size), you can easily compute the _standard correlation coefficient_ (aka _Pearson's r_), between every pair of attributes using the `corr()` method. 
+
+```s 
+corr_matrix = housing.corr(numeric_only=True)
+corr_matrix["median_house_value"].sort_values(ascending=False)
+```
+
+<p align="center">
+<img width="350" alt="image" src="https://user-images.githubusercontent.com/8760590/208122206-3a7a0630-608e-46dd-9b4f-804b533e1223.png">
+</p>
+
+2. The correlation coefficient ranges from -1 to 1. When it is close to 1, it means tht there is a strong positive correlation (e.g. if median house value and median income had a correlation coefficient of 1, it would mean for every increase in income there would be an increase in house value). Vice versa for -1. 
+
+<p align="center">
+<img width="350" alt="image" src="https://user-images.githubusercontent.com/8760590/208123416-1d3b83f3-1980-4506-8fc3-073da258cf8a.png">
+</p>
+
+> **NOTE:** The correlation coefficient **ONLY MEASURES LINEAR CORRELATIONS** (if "x" goes up then "y" goes down). **It may completely miss** nonlinear relationships. (if "x" goes to 0, then "y" goes up). Linear correlation **does not** depend on "slope" or "symmetry about the axis" relationships.
+
+3. Another way to chekc for correlation between attributes is to use the pandas _scatter matrix()_ function, which plots every numerical attributes against every other numerical attribute. Since there are 11 numerical attributes you wou
+
+<small>[Back to the Top](https://github.com/rodriggj/machinelearning/tree/proj01#3-discover-and-visualize-the-data-to-gain-insights)</small>
+---------
 ## References
 
 ### Data Sets (Real World)
