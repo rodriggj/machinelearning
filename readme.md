@@ -41,7 +41,7 @@
 - [ ] 2.10 - Check the size and type of data (time series, sample, geographical, etc.)
 - [ ] 2.11 - [Sample a test set, put it aside, and never look at it (no data snooping)](https://github.com/rodriggj/machinelearning/tree/proj01#211---sample-a-test-set-put-it-aside-and-never-look-at-it-no-data-snooping)
 
-3. Discover and visualize the data to gain insights
+#### 3. Discover and visualize the data to gain insights
 - [ ] 3.1 - Create a copy of the data for exploration
 - [ ] 3.2 - Create a Jupyter notebook to keep a record of your exploration
 - [ ] 3.3 - Study each attribute and its characteristics
@@ -53,7 +53,7 @@
 - [ ] 3.9 - Identify the extra data that would be useful 
 - [ ] 3.10 - Document what you learned
 
-4. Prepare the data for Machine Learning algorithms
+#### 4. Prepare the data for Machine Learning algorithms
 5. Select a model and train it
 6. Fine-tune your model 
 7. Present your solution 
@@ -339,9 +339,20 @@ for train_index, test_index, in split.split(housing, housing["income_cat"]):
 
 ---------
 
+#### 3.1 - Create a copy of the data for exploration
 
+1. Run the following command to create a copy of our training data
 
+```python
+housing = strat_train_set.copy()
+```
 ---------
+
+#### 3.5 - Visualize the data
+
+1. 
+---------
+
 
 ## References
 
