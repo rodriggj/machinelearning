@@ -116,7 +116,6 @@ You should be redirected to a browser where you will see the Jupyter notebook ap
 6. From this screen, Click "New", and select "Python 3". You will re-directed to a new Workspace in Jupyter Notebook. You can rename the notebook to "Median Housing Prices" for future reference. 
 
 <small>[Back to the Top](https://github.com/rodriggj/machinelearning/tree/proj01#2-get-the-data)</small>
-
 ---------
 
 #### 2.7 - Download the Data
@@ -143,6 +142,7 @@ Which should render a data table in your notebook.
 <img width="350" alt="image" src="https://user-images.githubusercontent.com/8760590/207964415-848be661-d721-40e6-971b-5dde8ef46d9f.png">
 </p>
 
+<small>[Back to the Top](https://github.com/rodriggj/machinelearning/tree/proj01#2-get-the-data)</small>
 ---------- 
 
 #### 2.8 - Convert the data to a format you can easily manipulate
@@ -219,7 +219,6 @@ There are several things to notice about these histograms:
 4. Finally, you notice that several of these histograms are `tail heavy`. Meaning there is a large amount of data outside of a "bell curve" which will make prediction accuracy difficult to predict "patterns". Some feature engineering or transformations of data may be necessary.
 
 <small>[Back to the Top](https://github.com/rodriggj/machinelearning/tree/proj01#2-get-the-data)</small>
-
 ---------
 
 #### 2.11 - Sample a test set, put it aside, and never look at it (no data snooping)
@@ -336,7 +335,6 @@ for train_index, test_index, in split.split(housing, housing["income_cat"]):
 5. It is now safe to say that our test data and our training data are similar such that a model built from the training set should have similar "generalization" when applied to our test set. 
 
 <small>[Back to the Top](https://github.com/rodriggj/machinelearning/tree/proj01#2-get-the-data)</small>
-
 ---------
 
 #### 3.1 - Create a copy of the data for exploration
@@ -346,6 +344,8 @@ for train_index, test_index, in split.split(housing, housing["income_cat"]):
 ```python
 housing = strat_train_set.copy()
 ```
+
+<small>[Back to the Top](https://github.com/rodriggj/machinelearning/tree/proj01#3-discover-and-visualize-the-data-to-gain-insights)</small>
 ---------
 
 #### 3.5 - Visualize the data
