@@ -55,7 +55,7 @@
 - [ ] 3.5 - [Visualize the data](https://github.com/rodriggj/machinelearning/tree/proj01#35---visualize-the-data)
 - [ ] 3.6 - [Study the correlations between attributes](https://github.com/rodriggj/machinelearning/tree/proj01#36---study-the-correlations-between-attributes)
 - [ ] 3.7 - Study how you would solve the problem manually 
-- [ ] 3.8 - Identify the promising transformations you may want to apply
+- [ ] 3.8 - [Identify the promising transformations you may want to apply]()
 - [ ] 3.9 - Identify the extra data that would be useful 
 - [ ] 3.10 - Document what you learned
 
@@ -431,10 +431,70 @@ corr_matrix["median_house_value"].sort_values(ascending=False)
 
 > **NOTE:** The correlation coefficient **ONLY MEASURES LINEAR CORRELATIONS** (if "x" goes up then "y" goes down). **It may completely miss** nonlinear relationships. (if "x" goes to 0, then "y" goes up). Linear correlation **does not** depend on "slope" or "symmetry about the axis" relationships.
 
-3. Another way to chekc for correlation between attributes is to use the pandas _scatter matrix()_ function, which plots every numerical attributes against every other numerical attribute. Since there are 11 numerical attributes you wou
+3. Another way to check for correlation between attributes is to use the pandas _scatter matrix()_ function, which plots every numerical attributes against every other numerical attribute. Since there are 11 numerical attributes you would get 11^2 = 121 plots, which would not fit on a page -- so lets just focus on a few promising attributes that seem most correlated with the median housing value. 
+
+```python
+from pandas.plotting import scatter_matrix
+
+attributes = ["median_house_value", "median_income", "total_rooms", "housing_median_age"]
+scatter_matrix(housing[attributes], figsize=(12, 8))
+```
+The most promising scatterplot that correlates `median_house_value` is `median_income`
+
+<p align="center">
+<img width="350" alt="image" src="https://user-images.githubusercontent.com/8760590/208184801-262e9c9e-8500-4140-a337-a674ad4579ec.png">
+</p>
+
+4. If we zoom in on this correlation scatter plot we can infer a few things. 
+
+```python
+housing.plot(kind="scatter", x="median_income", y="median_house_value", alpha=0.1)
+```
+
+<p align="center">
+<img width="350" alt="image" src="https://user-images.githubusercontent.com/8760590/208185246-17e47eca-4254-479a-b9ef-cc615fd0db37.png">
+</p>
+
++ First, the correlation is indeed very stong; you can clearly see the upward trend, and the points are not too dispersed. 
++ Second, the price cap that we noticed earlier is clearly visible as a horizontal line at $500,0000. 
++ This plot also reveals other less obvious straight lines -- note at $450K, another $350K, & perhaps one at $280K. These lines may negatively influence your model creation by skewing the predictive capabilities. These are worth looking into if not removing from the data set. 
 
 [Back to the Top](https://github.com/rodriggj/machinelearning/tree/proj01#3-discover-and-visualize-the-data-to-gain-insights)
+
 ---------
+
+#### 3.8 - Identify the promising transformations you may want to apply
+
+1. Hopefully the visualization has identified "quirks" you want to clean up, but also revealed that attributes in and of themselves may not be very useful in solving the business problem. For example: 
++ the `total_rooms` isn't really helpful if you don't know how many households there are. What you really want is `rooms per household`
++ similarly the `number of bedrooms` may not be useful unless put into a `number of bedrooms / total rooms`
++ finally the `population per household` may be a useful attribute
+
+2. To add these attributes you can apply the following code: 
+
+```python 
+housing["rooms_per_household"] = housing["total_rooms"]/housing["households"]
+housing["bedrooms_per_household"] = housing["total_bedrooms"]/housing["total_rooms"]
+housing["population_per_household"] = housing["population"]/housing["households"]
+```
+
+```python
+corr_matrix = housing.corr(numeric_only=True)
+corr_matrix["median_house_value"].sort_values(ascending=False)
+```
+
+<p align="center">
+<img width="350" alt="image" src="https://user-images.githubusercontent.com/8760590/208187423-b1d2e3ee-e1d6-4b94-9c6e-35aa620207df.png">
+</p>
+
+Here we get a new insight. Look at the `bedrooms_per_room` attribute is correlated to `median_house_price` by -0.25. This means that houses with lower bedroom to total room count are more expensive. 
+
+**NOTE:** These type of insights are meant to be iterative. As we train our model or are exposed to new expert advice, validating the correlation of attributes to the target attribute can be repeated to gain quantitative insights. 
+
+[Back to the Top](https://github.com/rodriggj/machinelearning/tree/proj01#3-discover-and-visualize-the-data-to-gain-insights)
+
+---------
+
 ## References
 
 ### Data Sets (Real World)
