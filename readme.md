@@ -484,7 +484,7 @@ corr_matrix["median_house_value"].sort_values(ascending=False)
 ```
 
 <p align="center">
-<img width="350" alt="image" src="https://user-images.githubusercontent.com/8760590/208187423-b1d2e3ee-e1d6-4b94-9c6e-35aa620207df.png">
+<img width="350" alt="image" src="https://user-images.githubusercontent.com/8760590/208188859-1e6612eb-1140-4054-ae4b-db0ba0f55fd2.png">
 </p>
 
 Here we get a new insight. Look at the `bedrooms_per_room` attribute is correlated to `median_house_price` by -0.25. This means that houses with lower bedroom to total room count are more expensive. 
