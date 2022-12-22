@@ -60,6 +60,13 @@
 - [ ] 3.10 - Document what you learned
 
 #### 4. Prepare the data for Machine Learning algorithms
+- [ ] 4.1 - Work on copies of the data (keep the original intact)
+- [ ] 4.2 - Write functions for all data transformations 
+- [ ] 4.3 - Clean Data
+- [ ] 4.4 - Feature Selection
+- [ ] 4.5 - Feature Engineering 
+- [ ] 4.6 - Feature Scaling 
+
 5. Select a model and train it
 6. Fine-tune your model 
 7. Present your solution 
